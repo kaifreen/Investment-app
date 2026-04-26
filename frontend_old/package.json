@@ -1,0 +1,17 @@
+{
+  "name": "investment-app-frontend",
+  "version": "1.0.0",
+  "description": "Investment App Frontend",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": ["investment", "app"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
