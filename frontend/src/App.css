@@ -61,7 +61,8 @@ body {
   gap: 15px;
 }
 
-.form-section input {
+.form-section input,
+.form-select {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(148, 163, 184, 0.2);
   color: #e2e8f0;
@@ -69,9 +70,11 @@ body {
   border-radius: 8px;
   font-size: 0.95rem;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
-.form-section input:focus {
+.form-section input:focus,
+.form-select:focus {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -79,6 +82,11 @@ body {
 
 .form-section input::placeholder {
   color: #64748b;
+}
+
+.form-select option {
+  background: #1e293b;
+  color: #e2e8f0;
 }
 
 .btn-primary {
@@ -419,3 +427,82 @@ body {
   }
 }
 
+/* Skeleton Loading Animation */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.1) 25%,
+    rgba(148, 163, 184, 0.2) 50%,
+    rgba(148, 163, 184, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: pulse 1.5s infinite linear;
+  border-radius: 6px;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.text-green {
+  color: #10b981;
+}
+
+.text-red {
+  color: #ef4444;
+}
+
+/* Light Theme Overrides */
+[data-theme='light'] body, [data-theme='light'] .auth-page {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #0f172a;
+}
+
+[data-theme='light'] .auth-card, [data-theme='light'] .card, [data-theme='light'] .investment-item, [data-theme='light'] .portfolio-item {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #0f172a;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='light'] .auth-card h1, [data-theme='light'] .form-section h2, [data-theme='light'] .card h4, [data-theme='light'] .investment-item h4, [data-theme='light'] .portfolio-item h4, [data-theme='light'] .section-header h3 {
+  color: #0f172a;
+}
+
+[data-theme='light'] .auth-card .subtitle, [data-theme='light'] .investment-item p, [data-theme='light'] .content-header p, [data-theme='light'] .portfolio-item p {
+  color: #475569;
+}
+
+[data-theme='light'] input, [data-theme='light'] .form-select {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #0f172a;
+}
+
+[data-theme='light'] input:focus, [data-theme='light'] .form-select:focus {
+  background: #ffffff;
+}
+
+[data-theme='light'] .navbar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+[data-theme='light'] .nav-link, [data-theme='light'] .logo h1, [data-theme='light'] .content-header h2 {
+  color: #0f172a;
+}
+
+[data-theme='light'] .nav-link:hover, [data-theme='light'] .nav-link.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+[data-theme='light'] .skeleton {
+  background: linear-gradient(90deg, rgba(203, 213, 225, 0.4) 25%, rgba(203, 213, 225, 0.8) 50%, rgba(203, 213, 225, 0.4) 75%);
+  background-size: 200% 100%;
+}

@@ -25,6 +25,8 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/investments', require('./routes/investmentRoutes'));
 app.use('/api/portfolios', require('./routes/portfolioRoutes'));
+app.use('/api/market', require('./routes/marketDataRoutes'));
+app.use('/api/alerts', require('./routes/alertRoutes'));
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
@@ -41,6 +43,9 @@ app.use((err, req, res, next) => {
   console.error('Error:', err.message);
   res.status(500).json({ error: err.message || 'Internal Server Error' });
 });
+
+// Start background workers
+require('./services/alertService').startCron();
 
 // Start Server
 const PORT = process.env.PORT || 5000;
