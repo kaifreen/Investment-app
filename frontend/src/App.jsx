@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { usePriceData } from './hooks/usePriceData'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
+import ChatBot from './components/ChatBot'
 import './App.css'
 
 function App() {
@@ -838,6 +839,15 @@ function App() {
           </div>
         )}
       </main>
+      
+      {/* ChatBot - Show only when logged in */}
+      {isLoggedIn && token && (
+        <ChatBot 
+          token={token} 
+          riskLevel={user?.riskLevel || 'moderate'}
+          investmentGoal={user?.investmentGoal || 'long-term growth'}
+        />
+      )}
     </div>
   )
 }

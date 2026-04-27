@@ -25,6 +25,7 @@
     "mongoose": "^9.5.0",
     "node-cron": "^4.2.1",
     "nodemailer": "^8.0.6",
+    "openai": "^6.34.0",
     "yahoo-finance2": "^3.14.0"
   },
   "devDependencies": {

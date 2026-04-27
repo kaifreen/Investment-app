@@ -11,6 +11,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Debug middleware to log incoming requests
+app.use((req, res, next) => {
+  console.log(`📥 ${req.method} ${req.path} - Auth: ${req.headers.authorization ? 'Yes' : 'No'}`);
+  next();
+});
+
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
@@ -22,11 +28,19 @@ mongoose.connect(process.env.MONGODB_URI)
   });
 
 // Routes
+console.log('⏳ Loading routes...');
 app.use('/api/auth', require('./routes/authRoutes'));
+console.log('✓ Auth routes loaded');
 app.use('/api/investments', require('./routes/investmentRoutes'));
+console.log('✓ Investment routes loaded');
 app.use('/api/portfolios', require('./routes/portfolioRoutes'));
+console.log('✓ Portfolio routes loaded');
 app.use('/api/market', require('./routes/marketDataRoutes'));
+console.log('✓ Market data routes loaded');
 app.use('/api/alerts', require('./routes/alertRoutes'));
+console.log('✓ Alert routes loaded');
+app.use('/api/chat', require('./routes/chatRoutes'));
+console.log('✓ Chat routes loaded');
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
